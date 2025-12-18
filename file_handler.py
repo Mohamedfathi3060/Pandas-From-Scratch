@@ -68,7 +68,7 @@ def read_dtype(file_path="data/titanic_dtype.csv"):
         print("File not found")
     return res
 
-def write_file(file_path="data/our.csv", data:dict=None):
+def write_file(file_path="data/out.csv", data:dict=None):
     """
     Write a data dictionary to a CSV file.
 
@@ -80,8 +80,8 @@ def write_file(file_path="data/our.csv", data:dict=None):
         None
     """
     try:
-            with open(file_path, "w", newline="") as f:
-                writer = csv.writer(f)
+        with open(file_path, "w", newline="") as f:
+            writer = csv.writer(f)
             writer.writerow(list(data.keys()))
             for i in range(len(list(data.values())[0])):
                 row = []
@@ -89,7 +89,7 @@ def write_file(file_path="data/our.csv", data:dict=None):
                     row.append(val[i])
                 writer.writerow(row)
     except:
-        print("invalid Write on File")
+        print("Invalid Data")
 
 # dict = read_dtype("data/titanic_dtype.csv")
 # data = read_csv_file("data/titanic.csv",dict)

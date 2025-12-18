@@ -88,10 +88,9 @@ class Dataframe:
     #TODO: define to_csv()
     def to_csv(self):
         try:
-            write_file()
+            write_file('data/out.csv',self.data)
         except:
-            print("Invalid Write")
-
+            print("Invalid")
 #
 # df = Dataframe.read_csv("data/titanic.csv","data/titanic_dtype.csv")
 # df.describe()
