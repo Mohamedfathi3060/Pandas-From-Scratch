@@ -1,7 +1,10 @@
+from dataframe import Dataframe
 def main():
+    pass
     # TODO: Read data
-
-
+    df = Dataframe.read_csv()
+    print(df.count_nulls())
+    df.describe()
     # TODO: Fill missing values
     # Numeric columns → mean
     # Categorical columns → mode

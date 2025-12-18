@@ -1,6 +1,6 @@
 import csv
 
-def read_csv_file(file_path, dtypes:dict):
+def read_csv_file(file_path="data/titanic.csv", dtypes:dict=None):
     """
     Read a CSV file and convert each column to the specified data type.
 
@@ -42,11 +42,12 @@ def read_csv_file(file_path, dtypes:dict):
         return res
     except FileNotFoundError:
         print("File not found")
+        return None
     except ValueError:
         print("Incorrect data type")
-    return res
+        return None
 
-def read_dtype(file_path):
+def read_dtype(file_path="data/titanic_dtype.csv"):
     """
     Read a CSV file containing column names and their data types.
 
@@ -66,7 +67,8 @@ def read_dtype(file_path):
     except FileNotFoundError:
         print("File not found")
     return res
-def write_file(file_path, data:dict):
+
+def write_file(file_path="data/our.csv", data:dict=None):
     """
     Write a data dictionary to a CSV file.
 
@@ -77,15 +79,18 @@ def write_file(file_path, data:dict):
     Returns:
         None
     """
-    # with open(file_path, "w") as f:
-    #     writer = csv.writer(f)
-    #     rows = []
-    #     rows.append(data.keys())
-    #     row = []
-    #     for key, val in data.items():
-    #         for i in range(len(val)):
-    #             row.append(val[i])
+    try:
+            with open(file_path, "w", newline="") as f:
+                writer = csv.writer(f)
+            writer.writerow(list(data.keys()))
+            for i in range(len(list(data.values())[0])):
+                row = []
+                for val in data.values():
+                    row.append(val[i])
+                writer.writerow(row)
+    except:
+        print("invalid Write on File")
 
-    pass
-dict = read_dtype("data/titanic_dtype.csv")
-read_csv_file("data/titanic.csv",dict)
+# dict = read_dtype("data/titanic_dtype.csv")
+# data = read_csv_file("data/titanic.csv",dict)
+# write_file('data/out.csv', data)
